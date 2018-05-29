@@ -17,7 +17,8 @@ socket.on('locations', function(data){
 		something.type = data[i].type
 		storage.push(something)
 	}
-	
+	console.log("data: " + data)
+	console.log("storage: "  + storage)
 	for(i = 0; i < storage.length; i++){
 		var newButton = "<p class='button attack stayCenter' onclick='calculateDiagLine(" + 
 		playerX + ", " + playerY + ", " + storage[i].xPos + ", " + storage[i].yPos + ")'>" + storage[i].name + ": " + storage[i].type + "</p>"
@@ -32,20 +33,17 @@ socket.on('locations', function(data){
 function loadButtons(list, direction){
 	
 	if(list.length > buttonMax){
-		document.getElementById('rightButton').style.color = "white"
-		document.getElementById('rightButton').style.background = "black"
+		document.getElementById('rightButton').style.display = "inline"
 	}
 	if(direction == "left"){
 		buttonX -= buttonMax
 		buttonY -= buttonMax
-		document.getElementById('rightButton').style.color = "white"
-		document.getElementById('rightButton').style.background = "black"
+		document.getElementById('rightButton').style.display = "inline"
 	}
 	else if(direction == "right"){
 		buttonX += buttonMax
 		buttonY += buttonMax
-		document.getElementById('leftButton').style.color = "white"
-		document.getElementById('leftButton').style.background = "black"
+		document.getElementById('leftButton').style.display = "inline"
 	}
 	currentButtons = list.slice(buttonX, buttonY)
 	document.getElementById('menu').innerHTML = currentButtons[0]
@@ -56,12 +54,10 @@ function loadButtons(list, direction){
 	}
 	
 	if(buttonX <= 0){
-		document.getElementById('leftButton').style.color = "transparent"
-		document.getElementById('leftButton').style.background = "transparent"
+		document.getElementById('leftButton').style.display = "none"
 	}
 	else if(buttonY >= list.length){
-		document.getElementById('rightButton').style.color = "transparent"
-		document.getElementById('rightButton').style.background = "transparent"
+		document.getElementById('leftButton').style.display = "none"
 	}	
 }
 loadButtons(locationList, "e")
