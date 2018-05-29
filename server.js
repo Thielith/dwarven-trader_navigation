@@ -30,6 +30,14 @@ io.sockets.on('connection', function (socket) {
 		})
 	})
 	
+	socket.on('locationNames', function(info){
+		var sql = "SELECT * FROM locations_e"
+		con.query(sql, function(err, result){
+			if (err) throw err;
+			socket.emit('locationNames', result)
+		})
+	})
+	
 	socket.on('disconnect', function(){
 		console.log("Someone From " + clientIp + " disconnected")
 	})

@@ -6,6 +6,7 @@ socket.emit('getPlayerPos', playerID)
 socket.on('getPlayerPos', function(data){
 	playerX = data[0].xPos
 	playerY = data[0].yPos
+	document.getElementById('position').innerHTML = "Position: " + playerX + ", " + playerY
 	socket.emit('locations')
 })
 socket.on('locations', function(data){
@@ -17,7 +18,17 @@ socket.on('locations', function(data){
 		something.type = data[i].type
 		storage.push(something)
 	}
-
+	socket.emit('locationNames')
+})
+socket.on('locationNames', function(data){
+	for(i = 0; i < data.length; i++){
+		for(j = 0; j < storage.length; j++){
+			if(data[i].id == storage[j].type){
+				storage[j].type = data[i].typeName
+			}
+		}
+	}
+	
 	for(i = 0; i < storage.length; i++){
 		var newButton = "<p class='button attack stayCenter' onclick='calculateDiagLine(" + 
 		playerX + ", " + playerY + ", " + storage[i].xPos + ", " + storage[i].yPos + ")'>" + storage[i].name + ": " + storage[i].type + "</p>"
