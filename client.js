@@ -9,15 +9,15 @@ socket.on('getPlayerPos', function(data){
 	socket.emit('locations')
 })
 socket.on('locations', function(data){
+	console.log(data)
 	var something = {name: undefined, xPos: undefined, yPos: undefined, type: undefined}
 	for(i = 0; i < data.length; i++){
 		something.name = data[i].name
 		something.xPos = data[i].xPos
 		something.yPos = data[i].yPos
 		something.type = data[i].type
-		console.log("something")
-		console.log(something)
 		storage.push(something)
+		console.log("something: " + something.name + " " + something.xPos + " " + something.yPos + " " + something.type)
 	}
 	console.log("data: ")
 	console.log(data)
