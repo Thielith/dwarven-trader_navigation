@@ -25,6 +25,7 @@ socket.on('locations', function(data){
 			locationList.push(newButton)
 		}
 	}
+	loadButtons(locationList, "e")
 })
 
 
@@ -57,7 +58,7 @@ function loadButtons(list, direction){
 		document.getElementById('rightButton').style.display = "none"
 	}	
 }
-loadButtons(locationList, "e")
+
 
 function checkDistance(x, y, Nx, Ny){
 	dx = Nx - x;
