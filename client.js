@@ -4,8 +4,8 @@ var buttonMax = 1, buttonX = 0, buttonY = 1
 var playerID = 0, playerX, playerY
 socket.emit('getPlayerPos', playerID)
 socket.on('getPlayerPos', function(data){
-	playerX = data.xPos
-	playerY = data.yPos
+	playerX = data[0].xPos
+	playerY = data[0].yPos
 	socket.emit('locations')
 })
 socket.on('locations', function(data){
@@ -15,6 +15,8 @@ socket.on('locations', function(data){
 		something.xPos = data[i].xPos
 		something.yPos = data[i].yPos
 		something.type = data[i].type
+		console.log("something")
+		console.log(something)
 		storage.push(something)
 	}
 	console.log("data: ")
@@ -27,6 +29,8 @@ socket.on('locations', function(data){
 		playerX + ", " + playerY + ", " + storage[i].xPos + ", " + storage[i].yPos + ")'>" + storage[i].name + ": " + storage[i].type + "</p>"
 		if(locationList.includes(newButton) == false){
 			locationList.push(newButton)
+			console.log("locationList")
+			console.log(locationList)
 		}
 	}
 })
