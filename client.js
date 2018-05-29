@@ -16,21 +16,13 @@ socket.on('locations', function(data){
 		something.yPos = data[i].yPos
 		something.type = data[i].type
 		storage.push(something)
-		console.log("something: " + something.name + " " + something.xPos + " " + something.yPos + " " + something.type)
-		console.log("storage: " + storage[i].name + " " + storage[i].xPos + " " + storage[i].yPos + " " + storage[i].type)
 	}
-	console.log("data: ")
-	console.log(data)
-	console.log("storage: ")
-	console.log(storage)
+
 	for(i = 0; i < storage.length; i++){
-		console.log(playerX, playerY, storage[i].xPos, storage[i].yPos, storage[i].name, storage[i].type)
 		var newButton = "<p class='button attack stayCenter' onclick='calculateDiagLine(" + 
 		playerX + ", " + playerY + ", " + storage[i].xPos + ", " + storage[i].yPos + ")'>" + storage[i].name + ": " + storage[i].type + "</p>"
 		if(locationList.includes(newButton) == false){
 			locationList.push(newButton)
-			console.log("locationList")
-			console.log(locationList)
 		}
 	}
 })
@@ -64,7 +56,7 @@ function loadButtons(list, direction){
 		document.getElementById('leftButton').style.display = "none"
 	}
 	else if(buttonY >= list.length){
-		document.getElementById('leftButton').style.display = "none"
+		document.getElementById('rightButton').style.display = "none"
 	}	
 }
 loadButtons(locationList, "e")
