@@ -45,12 +45,8 @@ function loadButtons(list, direction){
 		document.getElementById('leftButton').style.display = "inline"
 	}
 	currentButtons = list.slice(buttonX, buttonY)
+	console.log(currentButtons)
 	document.getElementById('menu').innerHTML = currentButtons[0]
-	for(rz = 0; rz < currentButtons.length; rz++){
-		var t = document.getElementById('menu').innerHTML =
-			document.getElementById('menu').innerHTML
-			+ currentButtons[rz]
-	}
 	
 	if(buttonX <= 0){
 		document.getElementById('leftButton').style.display = "none"
