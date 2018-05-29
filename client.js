@@ -44,7 +44,8 @@ function loadButtons(list, direction){
 		buttonY += buttonMax
 		document.getElementById('leftButton').style.display = "inline"
 	}
-	currentButtons = list.slice(buttonX, buttonY)
+	var currentButtons = list.slice(buttonX, buttonY)
+	console.log(currentButtons)
 	console.log(buttonX, buttonY)
 	document.getElementById('menu').innerHTML = currentButtons[0]
 	
