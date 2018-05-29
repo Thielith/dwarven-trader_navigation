@@ -46,7 +46,7 @@ function loadButtons(list, direction){
 	}
 	currentButtons = list.slice(buttonX, buttonY)
 	document.getElementById('menu').innerHTML = currentButtons[0]
-	for(rz = 1; rz < currentButtons.length; rz++){
+	for(rz = 0; rz < currentButtons.length; rz++){
 		var t = document.getElementById('menu').innerHTML =
 			document.getElementById('menu').innerHTML
 			+ currentButtons[rz]
