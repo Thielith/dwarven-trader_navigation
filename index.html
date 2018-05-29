@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+		<script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+		<link rel='stylesheet' href='./index.css' />
+		<link rel='stylesheet' href='./align.css' />
+    </head>
+
+    <body>
+		<div class="container" style="solid">
+			<h1 class="stayCenter">Where would you like to go?</h1>
+			
+			<div class="row">
+				<!-- Everything in the left collumm -->
+				<div class="container collumS">
+					<h5 class="stayCenter"><u>Cities you know:</u></h5>
+					<p class="stayCenter">a</p>
+				</div>
+				
+				<!-- Everything in the middle collumm -->
+				<div class="container collumM">
+					<div class="container collumS">
+						<p align="center" class="button stayCenter" id="leftButton" style="float:right" onclick="loadButtons(currentList, 'left')"><</p>
+					</div>
+					<div class="container collumM">
+						<p id="menu"></p>
+					</div>
+					
+					<div class="container collumS">
+						<p align="center" class="button stayCenter" id="rightButton" onclick="loadButtons(currentList, 'right')">></p>
+					</div>
+					
+				</div>
+				
+				<!-- Everything in the right collumm -->
+				<div class="container collumS">
+					<h5 class="stayCenter"><u>Your stats:</u></h5>
+					<li class="stayCenter">a: null</li>
+				</div>
+			</div>
+			
+			<div class="row">
+				<!-- Everything in the left collumm -->
+				<div class="container collumS">
+					<h5 class="stayCenter"><u>Travel History:</u></h5>
+					<p class="stayCenter">a</p>
+				</div>
+				
+				<!-- Everything in the middle collumm -->
+				<div class="container collumM">
+					<p class="stayCenter"><u>Items:</u></p>
+				</div>
+				
+				<!-- Everything in the right collumm -->
+				<div class="container collumS">
+					<h5 class="stayCenter"><u>Your current position</u></h5>
+					<p class="stayCenter" id="position">0, 0</p>
+				</div>
+			</div>
+		</div>
+    </body>
+	
+	<head>
+		<script src='./client.js'></script>
+	</head>
+</html>
