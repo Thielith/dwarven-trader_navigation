@@ -9,8 +9,17 @@ var con = mysql.createConnection({
 	database: "test_dwarven"
 })
 
+var e = 0
+function loopDelay(){
+	setTimeout(function () {
+      console.log(e)
+      i++;
+	  loopDelay()
+   }, 3000)
+}
 
 io.sockets.on('connection', function (socket) {
+	e += 1
 	var clientIp = socket.request.connection.remoteAddress;
 	console.log("Someone From " + clientIp + " Connected")
 	
