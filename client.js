@@ -57,9 +57,6 @@ function loadButtons(list, direction){
 		document.getElementById('leftButton').style.display = "inline"
 	}
 	var currentButtons = list.slice(buttonX, buttonY)
-	console.log(list)
-	console.log(currentButtons)
-	console.log(buttonX, buttonY)
 	document.getElementById('menu').innerHTML = currentButtons[0]
 	
 	if(buttonX <= 0){
@@ -70,7 +67,7 @@ function loadButtons(list, direction){
 	}	
 }
 
-
+var dx, dy, typeX, typeY;
 function checkDistance(x, y, Nx, Ny){
 	dx = Nx - x;
 	dy = Ny - y;
@@ -78,7 +75,6 @@ function checkDistance(x, y, Nx, Ny){
     if(dy < 0){dy = -dy}
 }
 function calculateDiagLine(x, y, Nx, Ny){
-	var dx, dy, typeX, typeY;
 	var diagonals = 0, lines = 0;
 
 	if(Nx < 0){Nx = -Nx; typeX = "negative"}
