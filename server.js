@@ -13,7 +13,6 @@ var e = 0
 function loopDelay(){
 	setTimeout(function () {
       console.log(e)
-      i++;
 	  loopDelay()
    }, 3000)
 }
