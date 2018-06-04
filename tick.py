@@ -10,6 +10,7 @@ cur = db.cursor()
 #playerX,   playerY,   newX,      newY,      typeX,      typeY,     diffX, diffY, lines, diagonals, playerID
 sqlCommand = "SELECT * FROM playerPos;"
 print(cur.execute(sqlCommand))
+
 print("close")
 db.close();
 
