@@ -120,14 +120,14 @@ io.sockets.on('connection', function (socket) {
 	
 	socket.on('travel', function(info){
 		console.log(info)
-		playerX = info[0].playerX
-		playerY = info[0].playerY
-		newX = info[0].newX 
-		newY = info[0].newY
-		typeX = info[0].typeX
-		typeY = info[0].typeY
-		lines = info[0].lines 
-		diagonals = info[0].diagonals
+		playerX = info.playerX
+		playerY = info.playerY
+		newX = info.newX 
+		newY = info.newY
+		typeX = info.typeX
+		typeY = info.typeY
+		lines = info.lines 
+		diagonals = info.diagonals
 		diffX = Math.abs(playerX - newX);
 		diffY = Math.abs(playerY - newY);
 	})

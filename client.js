@@ -117,6 +117,7 @@ function calculateLine(x, y, Nx, Ny){
 	}
 
 	console.log("diagLines: " + diagonals, lines);
+	sendTravelInfo();
 }
 
 function sendTravelInfo(){
@@ -126,7 +127,7 @@ function sendTravelInfo(){
 		typeX: typeX, typeY: typeY,
 		lines: lines, diagonals: diagonals
 	}
-	
+	console.log(packet)
 	socket.emit(
 		'travel', packet
 	)
