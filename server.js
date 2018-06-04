@@ -89,7 +89,6 @@ function loopDelay(){
 loopDelay()
 
 io.sockets.on('connection', function (socket) {
-	e += 1
 	var clientIp = socket.request.connection.remoteAddress;
 	console.log("Someone From " + clientIp + " Connected")
 	

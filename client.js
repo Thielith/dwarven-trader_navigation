@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.6.43:33333');
+var socket = io.connect('http://192.168.10.206:33333');
 var storage = [], locationList = [], currentList = locationList
 var buttonMax = 1, buttonX = 0, buttonY = 1
 var playerID = 0, playerX, playerY
@@ -130,74 +130,4 @@ function sendTravelInfo(){
 	socket.emit(
 		'travel', packet
 	)
-}
-//----server code------
-var playerX, newX, typeX, playerY, newY, typeY, lines, diagonals
-var diffX = playerX - newX, diffY = playerY - newY;
-diffX = Math.abs(diffX);
-diffY = Math.abs(diffY);
-
-if(diffX === 0){
-	playerY += 1;
-	console.log("playerX Y: " + playerX, playerY);
-}
-else if(diffY === 0){
-	playerX += 1;
-	console.log("playerX Y: " + playerX, playerY);
-}
-
-else if(playerX != newX && playerY != newY){
-	if(lines !== 0){
-		if(diffX > diffY){
-			if(typeX == "negative"){
-				 playerX -= 1;
-			}
-			else{
-				playerX += 1;
-			}
-		}  
-		else if(diffX < diffY){
-			if(typeY == "negative"){
-				playerY -= 1;
-			}
-			else{
-				playerY += 1;
-			}
-		}
-		lines -= 1;
-	}
-	else if(diagonals !== 0){
-		if(diffX > diffY){
-			if(typeY == "negative"){
-				playerY -= 1;
-			}
-			else{
-				playerY += 1;
-			}
-		}
-		else if(diffX < diffY){
-			if(typeX == "negative" && typeY == "negative"){
-				playerX -= 1;
-				playerY -= 1;
-			}
-			else if(typeX == "negative"){
-				playerX -= 1;
-				playerY += 1;
-			}
-			else if(typeY == "negative"){
-				playerX += 1;
-				playerY -= 1;
-			}
-			else{
-				playerX += 1;
-				playerY += 1;
-			}
-		}
-		diagonals -= 1;
-	}
-	console.log("playerX Y: " + playerX, playerY);
-}
-
-else{
-	console.log("travel complete")
 }
