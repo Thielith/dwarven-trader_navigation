@@ -80,7 +80,9 @@ function tick(){
 
 function loopDelay(){
 	setTimeout(function () {
+		console.log("e")
 		if(playerX, newX, typeX, diffX, playerY, newY, typeY, diffY, lines, diagonals != undefined){
+			console.log(tick)
 			tick() 
 		}
 		loopDelay()
@@ -117,6 +119,7 @@ io.sockets.on('connection', function (socket) {
 	})
 	
 	socket.on('travel', function(info){
+		console.log(info)
 		playerX = info[0].playerX
 		playerY = info[0].playerY
 		newX = info[0].newX 
