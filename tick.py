@@ -7,10 +7,13 @@ db = MySQLdb.connect(host="localhost",  # your host
 						 db="test_dwarven")  # name of the database
 cur = db.cursor()
 
-#playerX,   playerY,   newX,      newY,      typeX,      typeY,     diffX, diffY, lines, diagonals, playerID
+#playerX e,   playerY e,   newX e,      newY e,      typeX e,      typeY e,     diffX, diffY, lines, diagonals, playerID
 sqlCommand = "SELECT * FROM playerPos;"
 cur.execute(sqlCommand)
-print(cur.fetchall())
+data = cur.fetchall()
+
+if data[1][4] < 0:
+	print("negative X")
 
 print("close")
 db.close();
