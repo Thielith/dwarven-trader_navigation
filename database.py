@@ -34,7 +34,7 @@ def insertIntoDatabase(database,tableName,names,values):
 	print("commit insert")
 	database.commit()
 
-def updateDatabaseData(connection,tableName,collummNames, values, idName = "playerID"):
+def updateDatabaseData(connection,tableName,collummNames, values, idName):
 	collummString = ""
 	i = 0
 	for name in collummNames:
@@ -42,7 +42,7 @@ def updateDatabaseData(connection,tableName,collummNames, values, idName = "play
 		collummString += ","
 		i+=1
 	collummString = collummString.strip(',')
-	sqlCommand = "UPDATE " + tableName + " SET" + collummString + " WHERE playerID = " + sys.argv[1] + ";"
+	sqlCommand = "UPDATE " + tableName + " SET" + collummString + " WHERE playerID = " + id + ";"
 	print(sqlCommand)
 	connection.execute(sqlCommand)
 
