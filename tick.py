@@ -109,28 +109,19 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 			lines -= 1
 	
 		elif diagonals != 0:
-			if diffX > diffY:
-				if typeY == "negative":
-					collumm = "yPos = yPos"
-					value = " - 1"
-				else:
-					collumm = "yPos = yPos"
-					value = " + 1"
-	
-			elif diffX < diffY:
-				if typeX == "negative" and typeY == "negative":
-					collumm = "xPos = xPos - 1, "
-					value = "yPos = yPos - 1"
-				elif typeX == "negative":
-					collumm = "xPos = xPos - 1, "
-					value = "yPos = yPos + 1"
-				elif typeY == "negative":
-					collumm = "xPos = xPos + 1, "
-					value = "yPos = yPos - 1"
-				else:
-					collumm = "xPos = xPos + 1, "
-					value = "yPos = yPos + 1"
-			diagonals -= 1;
+			if typeX == "negative" and typeY == "negative":
+				collumm = "xPos = xPos - 1, "
+				value = "yPos = yPos - 1"
+			elif typeX == "negative":
+				collumm = "xPos = xPos - 1, "
+				value = "yPos = yPos + 1"
+			elif typeY == "negative":
+				collumm = "xPos = xPos + 1, "
+				value = "yPos = yPos - 1"
+			else:
+				collumm = "xPos = xPos + 1, "
+				value = "yPos = yPos + 1"
+		diagonals -= 1;
 
 	elif playerX == newX and playerY == newY:
 		print("travel complete")
