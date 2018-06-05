@@ -45,7 +45,6 @@ def calculateLine(x, y, Nx, Ny):
 				x -= 1
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
-			print("lines x + 1")
 			lines += 1
 		
 		elif dx < dy:
@@ -55,7 +54,6 @@ def calculateLine(x, y, Nx, Ny):
 				y -= 1
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
-			print("lines y + 1")
 			lines += 1
 		
 		elif dx == dy:
@@ -69,7 +67,6 @@ def calculateLine(x, y, Nx, Ny):
 				y -= 1
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
-			print("diagonals + 1")
 			diagonals += 1
 		
 		i += 1
@@ -140,6 +137,8 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 
 
 for i in posTable:
+	typeX = ""
+	typeY = ""
 	if i[newX] < 0:
 		typeX = "negative"
 	if i[newY] < 0:
