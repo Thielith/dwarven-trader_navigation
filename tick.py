@@ -8,46 +8,26 @@ db = MySQLdb.connect(host="localhost",  # your host
 cur = db.cursor()
 
 #CONST
+playerID = 0
 playerX = 1
 playerY = 2
 newX = 3
 newY = 4
-#playerX e, playerY e, newX e, newY e, typeX e, typeY e, diffX e, diffY e, lines, diagonals, playerID
+
 sqlCommand = "SELECT * FROM playerPos;"
 cur.execute(sqlCommand)
 posTable = cur.fetchall()
 
-if posTable[1][newX] < 0:
-	typeX = "negative"
-if posTable[1][newY] < 0:
-	typeY = "negative"
-
-diffX = abs(posTable[0][playerX] - posTable[0][newX])
-diffY = abs(posTable[0][playerY] - posTable[0][newY])
-
-print("playerX: " + str(posTable[0][playerX]))
-print("playerY: " + str(posTable[0][playerY]))
-print("newX: " + str(posTable[0][newX]))
-print("newY: " + str(posTable[0][newY]))
-
-dx = 0
-dy = 0
 def checkDistance(x, y):
 	z = abs(x - y)
 	return z
-
-diagonals = 0
-lines = 0
 def calculateLine(x, y, Nx, Ny):
-	global diagonals
-	global lines
+	global diagonals, lines
 	Nx = abs(Nx)
 	Ny = abs(Ny)
 
 	dx = checkDistance(x, Nx)
 	dy = checkDistance(y, Ny)
-	print("dx" + str(dx))
-	print("dy" + str(dy))
 
 	if x == Nx:
 		diagonals = 0
@@ -58,7 +38,6 @@ def calculateLine(x, y, Nx, Ny):
 	
 	i = 0
 	while x != Nx and y != Ny and i != 100:
-		print(i)
 		if dx > dy:
 			if x < Nx:
 				x += 1
@@ -97,14 +76,84 @@ def calculateLine(x, y, Nx, Ny):
 
 	print("diagLines: " + str(diagonals) + " " + str(lines))
 
+def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, lines, diagonals, playerID){
+	if diffX == 0:
+		collumm = "yPos = yPos"
+		value = " + 1"
+	
+	elif diffY == 0:
+		collumm = "xPos = xPos"
+		value = " + 1"
+
+	elif playerX != newX and playerY != newY:
+		if lines != 0:
+			if diffX > diffY:
+				if typeX == "negative":
+					collumm = "xPos = xPos"
+					value = " - 1"
+				else:
+					collumm = "xPos = xPos"
+					value = " + 1"
+			
+			elif diffX < diffY:
+				if typeY == "negative":
+					collumm = "yPos = yPos"
+					value = " - 1"
+				
+				else:
+					collumm = "yPos = yPos"
+					value = " + 1"
+			lines -= 1
+	
+		elif diagonals != 0:
+			if diffX > diffY:
+				if typeY == "negative":
+					collumm = "yPos = yPos"
+					value = " - 1"
+				else:
+					collumm = "yPos = yPos"
+					value = " + 1"
+	
+			elif diffX < diffY:
+				if typeX == "negative" and typeY == "negative":
+					collumm = "xPos = xPos - 1, "
+					value = "yPos = yPos - 1"
+				elif typeX == "negative":
+					collumm = "xPos = xPos - 1, "
+					value = "yPos = yPos + 1"
+				elif typeY == "negative":
+					collumm = "xPos = xPos + 1, "
+					value = "yPos = yPos - 1"
+				else:
+					collumm = "xPos = xPos + 1, "
+					value = "yPos = yPos + 1"
+			diagonals -= 1;
+
+	elif playerX == newX and playerY == newY:
+		print("travel complete")
+		collumm = "NewXPos = NULL, "
+		value = "NewYPos = NULL"
+	
+	sqlCommand = "UPDATE playerPos SET " + collumm + value + " where playerID = " + playerID
+	cur.execute(sqlCommand)
 
 
-calculateLine(posTable[0][playerX], posTable[0][playerY], posTable[0][newX], posTable[0][newY])
-print("playerX: " + str(posTable[0][playerX]))
-print("playerY: " + str(posTable[0][playerY]))
-print("newX: " + str(posTable[0][newX]))
-print("newY: " + str(posTable[0][newY]))
-
+for i in posTable:
+	if posTable[i][newX] < 0:
+		typeX = "negative"
+	if posTable[i][newY] < 0:
+		typeY = "negative"
+	
+	diffX = abs(posTable[i][playerX] - posTable[i][newX])
+	diffY = abs(posTable[i][playerY] - posTable[i][newY])
+	
+	diagonals = 0
+	lines = 0
+	calculateLine(posTable[i][playerX], posTable[i][playerY], posTable[i][newX], posTable[i][newY])
+	calculateNextXY(
+		posTable[i][playerX], posTable[i][playerY], posTable[i][newX], posTable[i][newY], 
+		typeX, typeY, diffX, diffY, lines, diagonals, posTable[i][playerID]
+		)
 
 #move calculation t pyhton
 print("close")
