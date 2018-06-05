@@ -20,9 +20,9 @@ posTable = cur.fetchall()
 
 def checkDistance(x, y):
 	if x < 0 and y < 0 or x > 0 and y > 0:
-		z = abs(x - y)
-	else:
 		z = abs(x + y)
+	else:
+		z = abs(x - y)
 	return z
 def calculateLine(x, y, Nx, Ny):
 	global diagonals, lines
