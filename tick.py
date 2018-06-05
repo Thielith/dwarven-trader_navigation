@@ -39,6 +39,8 @@ def checkDistance(x, y):
 diagonals = 0
 lines = 0
 def calculateLine(x, y, Nx, Ny):
+	global diagonals
+	global lines
 	Nx = abs(Nx)
 	Ny = abs(Ny)
 
@@ -48,11 +50,11 @@ def calculateLine(x, y, Nx, Ny):
 	print("dy" + str(dy))
 
 	if x == Nx:
-		global diagonals = 0
-		global lines = abs(y - Ny)
+		diagonals = 0
+		lines = abs(y - Ny)
 	elif y == Ny:
-		global diagonals = 0
-		global lines = abs(x - Nx)
+		diagonals = 0
+		lines = abs(x - Nx)
 	
 	i = 0
 	while x != Nx and y != Ny and i != 100:
@@ -65,7 +67,7 @@ def calculateLine(x, y, Nx, Ny):
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
 			print("lines x + 1")
-			global lines += 1
+			lines += 1
 		
 		elif dx < dy:
 			if y < Ny:
@@ -75,7 +77,7 @@ def calculateLine(x, y, Nx, Ny):
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
 			print("lines y + 1")
-			global lines += 1
+			lines += 1
 		
 		elif dx == dy:
 			if x < Nx:
@@ -89,7 +91,7 @@ def calculateLine(x, y, Nx, Ny):
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
 			print("diagonals + 1")
-			global diagonals += 1
+			diagonals += 1
 		
 		i += 1
 
