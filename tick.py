@@ -29,6 +29,8 @@ def calculateLine(x, y, Nx, Ny):
 	global diagonals, lines
 	Nx = abs(Nx)
 	Ny = abs(Ny)
+	x = abs(x)
+	y = abs(y)
 
 	dx = checkDistance(x, Nx)
 	dy = checkDistance(y, Ny)
