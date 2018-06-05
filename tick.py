@@ -181,9 +181,9 @@ for i in posTable:
 	if i[newX] != None or i[newY] != None:
 		typeX = ""
 		typeY = ""
-		if i[newX] < 0 and i[playerX] > 0:
+		if i[newX] < i[playerX]:
 			typeX = "negative"
-		if i[newY] < 0 and i[playerY] > 0:
+		if i[newY] < i[playerY]:
 			typeY = "negative"
 		
 		diffX = abs(i[playerX] - i[newX])
