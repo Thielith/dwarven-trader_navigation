@@ -74,6 +74,12 @@ def calculateLine(x, y, Nx, Ny):
 	print("diagLines: " + str(diagonals) + " " + str(lines))
 
 def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, lines, diagonals, playerID):
+	print("diffX: " + str(diffX))
+	print("diffY: "str(diffY))
+	print("playerX: "str(playerX))
+	print("playerY: "str(playerY))
+	print("newX: "str(newX))
+	print("newY: "str(newY))
 	if diffX == 0:
 		collumm = "yPos = yPos"
 		value = " + 1"
