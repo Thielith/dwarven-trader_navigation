@@ -51,12 +51,14 @@ def calculateLine(x, y, Nx, Ny):
 	
 	i = 0
 	while x != Nx and y != Ny and i != 100:
+		print(i)
 		if dx > dy:
 			if x < Nx:
 				x += 1
 			elif x > Nx:
 				x -= 1
 			checkDistance(x, y, Nx, Ny)
+			print("lines x + 1")
 			lines += 1
 		
 		elif dx < dy:
@@ -65,6 +67,7 @@ def calculateLine(x, y, Nx, Ny):
 			elif y > Ny:
 				y -= 1
 			checkDistance(x, y, Nx, Ny)
+			print("lines y + 1")
 			lines += 1
 		
 		elif dx == dy:
@@ -77,6 +80,7 @@ def calculateLine(x, y, Nx, Ny):
 			elif y > Ny:
 				y -= 1
 			checkDistance(x, y, Nx, Ny)
+			print("diagonals + 1")
 			diagonals += 1
 		
 		i += 1
