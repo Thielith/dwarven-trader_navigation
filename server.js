@@ -16,7 +16,7 @@ function updateDatabase(){
 
 function loopDelay(){
 	setTimeout(function () {
-		console.log("1 second has passed")
+		console.log("3 second has passed")
 		updateDatabase()
 		loopDelay()
 	}, 3000)

@@ -80,7 +80,7 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 	print("playerY: " + str(playerY))
 	print("newX: " + str(newX))
 	print("newY: " + str(newY))
-	if diffX == 0:
+	if diffX == 0 and diffY != 0:
 		if typeY == "negative": 
 			collumm = "yPos = yPos"
 			value = " - 1"
@@ -88,7 +88,7 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 			collumm = "yPos = yPos"
 			value = " - 1"
 	
-	elif diffY == 0:
+	elif diffY == 0 and diffX != 0:
 		if typeX == "negative":
 			collumm = "xPos = xPos"
 			value = " - 1"
