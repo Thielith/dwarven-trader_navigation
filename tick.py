@@ -135,24 +135,25 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 		value = "NewYPos = NULL"
 	
 	sqlCommand = "UPDATE playerPos SET " + collumm + value + " where playerID = " + playerID
+	print(sqlCommand)
 	cur.execute(sqlCommand)
 
 
 for i in posTable:
-	if posTable[i][newX] < 0:
+	if i[newX] < 0:
 		typeX = "negative"
-	if posTable[i][newY] < 0:
+	if i[newY] < 0:
 		typeY = "negative"
 	
-	diffX = abs(posTable[i][playerX] - posTable[i][newX])
-	diffY = abs(posTable[i][playerY] - posTable[i][newY])
+	diffX = abs(i[playerX] - i[newX])
+	diffY = abs(i[playerY] - i[newY])
 	
 	diagonals = 0
 	lines = 0
-	calculateLine(posTable[i][playerX], posTable[i][playerY], posTable[i][newX], posTable[i][newY])
+	calculateLine(i[playerX], i[playerY], i[newX], i[newY])
 	calculateNextXY(
-		posTable[i][playerX], posTable[i][playerY], posTable[i][newX], posTable[i][newY], 
-		typeX, typeY, diffX, diffY, lines, diagonals, posTable[i][playerID]
+		i[playerX], i[playerY], i[newX], i[newY], 
+		typeX, typeY, diffX, diffY, lines, diagonals, i[playerID]
 		)
 
 #move calculation t pyhton
