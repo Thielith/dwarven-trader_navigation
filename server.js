@@ -9,82 +9,15 @@ var con = mysql.createConnection({
 	database: "test_dwarven"
 })
 
-var playerX, newX, typeX, diffX, playerY, newY, typeY, diffY, lines, diagonals
-function tick(){
-	if(diffX === 0){
-		playerY += 1;
-		console.log("playerX Y: " + playerX, playerY);
-	}
-	else if(diffY === 0){
-		playerX += 1;
-		console.log("playerX Y: " + playerX, playerY);
-	}
-
-	else if(playerX != newX && playerY != newY){
-		if(lines !== 0){
-			if(diffX > diffY){
-				if(typeX == "negative"){
-					 playerX -= 1;
-				}
-				else{
-					playerX += 1;
-				}
-			}  
-			else if(diffX < diffY){
-				if(typeY == "negative"){
-					playerY -= 1;
-				}
-				else{
-					playerY += 1;
-				}
-			}
-			lines -= 1;
-		}
-		else if(diagonals !== 0){
-			if(diffX > diffY){
-				if(typeY == "negative"){
-					playerY -= 1;
-				}
-				else{
-					playerY += 1;
-				}
-			}
-			else if(diffX < diffY){
-				if(typeX == "negative" && typeY == "negative"){
-					playerX -= 1;
-					playerY -= 1;
-				}
-				else if(typeX == "negative"){
-					playerX -= 1;
-					playerY += 1;
-				}
-				else if(typeY == "negative"){
-					playerX += 1;
-					playerY -= 1;
-				}
-				else{
-					playerX += 1;
-					playerY += 1;
-				}
-			}
-			diagonals -= 1;
-		}
-		console.log("playerX Y: " + playerX, playerY);
-	}
-
-	else{
-		console.log("travel complete")
-	}
-
+function updateDatabase(){
+	var e = "python tick.py"
+	exec(e);
 }
 
 function loopDelay(){
 	setTimeout(function () {
-		console.log("e")
-		if(playerX, newX, typeX, diffX, playerY, newY, typeY, diffY, lines, diagonals != undefined){
-			console.log(tick)
-			tick() 
-		}
+		console.log("1 second has passed")
+		updateDatabase()
 		loopDelay()
 	}, 3000)
 }
@@ -118,18 +51,12 @@ io.sockets.on('connection', function (socket) {
 		})
 	})
 	
-	socket.on('travel', function(info){
-		console.log(info)
-		playerX = info.playerX
-		playerY = info.playerY
-		newX = info.newX 
-		newY = info.newY
-		typeX = info.typeX
-		typeY = info.typeY
-		lines = info.lines 
-		diagonals = info.diagonals
-		diffX = Math.abs(playerX - newX);
-		diffY = Math.abs(playerY - newY);
+	socket.on('newPosPlayer', function(info){
+		var sql = "UPDATE playerPos SET NewXPos = " + info.newX + ", NewYPos = " + info.newY + " WHERE playerID = " + info.playerID
+		con.query(sql, function(err, result){
+			if (err) throw err;
+			console.log(result.affectedRows + " record(s) updated");
+		})
 	})
 	
 	socket.on('disconnect', function(){

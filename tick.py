@@ -135,28 +135,26 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 	print(sqlCommand)
 	cur.execute(sqlCommand)
 
-if isInstance(posTable[2][1], str):
-	print("NULL is String")
-print(posTable[2][1])
 
 for i in posTable:
-	typeX = ""
-	typeY = ""
-	if i[newX] < 0:
-		typeX = "negative"
-	if i[newY] < 0:
-		typeY = "negative"
-	
-	diffX = abs(i[playerX] - i[newX])
-	diffY = abs(i[playerY] - i[newY])
-	
-	diagonals = 0
-	lines = 0
-	calculateLine(i[playerX], i[playerY], i[newX], i[newY])
-	calculateNextXY(
-		i[playerX], i[playerY], i[newX], i[newY], 
-		typeX, typeY, diffX, diffY, lines, diagonals, i[playerID]
-		)
+	if i[NewXPos] != None or i[NewYPos] != None:
+		typeX = ""
+		typeY = ""
+		if i[newX] < 0:
+			typeX = "negative"
+		if i[newY] < 0:
+			typeY = "negative"
+		
+		diffX = abs(i[playerX] - i[newX])
+		diffY = abs(i[playerY] - i[newY])
+		
+		diagonals = 0
+		lines = 0
+		calculateLine(i[playerX], i[playerY], i[newX], i[newY])
+		calculateNextXY(
+			i[playerX], i[playerY], i[newX], i[newY], 
+			typeX, typeY, diffX, diffY, lines, diagonals, i[playerID]
+			)
 
 #move calculation t pyhton
 print("commit update")
