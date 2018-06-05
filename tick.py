@@ -22,6 +22,10 @@ def checkDistance(x, y):
 	z = abs(x - y)
 	return z
 def calculateLine(x, y, Nx, Ny):
+	print("x:" + str(x))
+	print("y:" + str(y))
+	print("Nx:" + str(Nx))
+	print("Ny:" + str(Ny))
 	global diagonals, lines
 	Nx = abs(Nx)
 	Ny = abs(Ny)
@@ -74,12 +78,6 @@ def calculateLine(x, y, Nx, Ny):
 	print("diagLines: " + str(diagonals) + " " + str(lines))
 
 def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, lines, diagonals, playerID):
-	print("diffX: " + str(diffX))
-	print("diffY: " + str(diffY))
-	print("playerX: " + str(playerX))
-	print("playerY: " + str(playerY))
-	print("newX: " + str(newX))
-	print("newY: " + str(newY))
 	if diffX == 0 and diffY != 0:
 		if typeY == "negative": 
 			collumm = "yPos = yPos"
