@@ -131,7 +131,7 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 		collumm = "NewXPos = NULL, "
 		value = "NewYPos = NULL"
 	
-	sqlCommand = "UPDATE playerPos SET " + str(collumm) + str(value) + " where playerID = " + playerID
+	sqlCommand = "UPDATE playerPos SET " + str(collumm) + str(value) + " where playerID = " + str(playerID)
 	print(sqlCommand)
 	cur.execute(sqlCommand)
 
