@@ -30,14 +30,18 @@ socket.on('locationNames', function(data){
 	}
 	
 	for(i = 0; i < storage.length; i++){
-		var newButton = "<p class='button attack stayCenter' onclick='calculateLine(" + 
-		playerX + ", " + playerY + ", " + storage[i].xPos + ", " + storage[i].yPos + ", " + i + ")'>" + storage[i].name + ": " + storage[i].type + "</p>"
+		var newButton = "<p class='button attack stayCenter' onclick='addToQueue(" + 
+		storage[i].xPos + ", " + storage[i].yPos + ", " + i + ")'>" + storage[i].name + ": " + storage[i].type + "</p>"
 		if(locationList.includes(newButton) == false){
 			locationList.push(newButton)
 		}
 	}
 	loadButtons(locationList, "e")
 })
+socket.on('getYourPos', function(){
+	socket.emit('getPlayerPos', playerID)
+})
+
 
 function loadButtons(list, direction){
 	
@@ -65,70 +69,6 @@ function loadButtons(list, direction){
 	}	
 }
 
-var dx, dy, typeX, typeY, newX, newY;
-var diagonals = 0, lines = 0;
-function checkDistance(x, y, Nx, Ny){
-	dx = Nx - x;
-	dy = Ny - y;
-	if(dx < 0){dx = -dx; typeX = "negative"}
-	if(dy < 0){dy = -dy; typeY = "negative"}
-	
-}
-function calculateLine(x, y, Nx, Ny){
-	typeX = "", typeY = "";
-	newX = Nx, newY = Ny;
-	Nx = Math.abs(Nx);
-	Ny = Math.abs(Ny);
-
-	checkDistance(x, y, Nx, Ny);
-
-	if(x == Nx){
-		diagonals = 0;
-		if(y > Ny){lines = y - Ny}
-		else if(y < Ny){lines = Ny - y}
-	}
-	else if(y == Ny){
-		diagonals = 0;
-		if(x > Nx){lines = x - Nx}
-		else if(x < Nx){lines = Nx - x}
-	}
-
-	for(i = 0; x != Nx && y != Ny && i != 100; i++){
-		if(dx > dy){
-			if(x < Nx){x += 1}
-			else if(x > Nx){x -= 1}
-			checkDistance(x, y, Nx, Ny);
-			lines += 1;
-		}
-		else if(dx < dy){
-			if(y < Ny){y += 1}
-			else if(y > Ny){y -= 1}
-			checkDistance(x, y, Nx, Ny);
-			lines += 1;
-		}
-		else if(dx == dy){
-			if(x < Nx){x += 1}
-			else if(x > Nx){x -= 1}
-			if(y < Ny){y += 1}
-			else if(y > Ny){y -= 1}
-			checkDistance(x, y, Nx, Ny);
-			diagonals += 1;
-		}
-	}
-
-	console.log("diagLines: " + diagonals, lines);
-	sendTravelInfo();
-}
-
-function sendTravelInfo(){
-	var packet = {
-		playerX: playerX, playerY: playerY,
-		newX: newX, newY: newY,
-		typeX: typeX, typeY: typeY,
-		lines: lines, diagonals: diagonals
-	}
-	console.log(packet)
-	socket.emit(
-		'travel', packet
-	)
+function addToQueue(newX, newY){
+	socket.emit('newPosPlayer', {newX: newX, newY: newY, playerID: playerID})
 }
