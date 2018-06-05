@@ -35,12 +35,16 @@ dy = 0
 def checkDistance(x, y, Nx, Ny):
 	dx = abs(Nx - x)
 	dy = abs(Ny - y)
+	print("dx" + str(dx))
+	print("dy" + str(dy))
 
 def calculateLine(x, y, Nx, Ny):
 	Nx = abs(Nx)
 	Ny = abs(Ny)
 
 	checkDistance(x, y, Nx, Ny)
+	print("dx" + str(dx))
+	print("dy" + str(dy))
 
 	if x == Nx:
 		diagonals = 0
