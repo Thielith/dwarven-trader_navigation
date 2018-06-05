@@ -137,7 +137,7 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 
 
 for i in posTable:
-	if i[NewXPos] != None or i[NewYPos] != None:
+	if i[newX] != None or i[newY] != None:
 		typeX = ""
 		typeY = ""
 		if i[newX] < 0:
