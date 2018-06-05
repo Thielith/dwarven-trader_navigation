@@ -156,6 +156,8 @@ for i in posTable:
 		)
 
 #move calculation t pyhton
+print("commit update")
+db.commit();
 print("close")
 db.close();
 
