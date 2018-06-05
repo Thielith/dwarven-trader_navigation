@@ -22,54 +22,71 @@ def checkDistance(x, y):
 	z = abs(x - y)
 	return z
 def calculateLine(x, y, Nx, Ny):
-	print("x:" + str(x))
-	print("y:" + str(y))
-	print("Nx:" + str(Nx))
-	print("Ny:" + str(Ny))
 	global diagonals, lines
 	Nx = abs(Nx)
 	Ny = abs(Ny)
 	x = abs(x)
 	y = abs(y)
 
+	print("x:" + str(x))
+	print("y:" + str(y))
+	print("Nx:" + str(Nx))
+	print("Ny:" + str(Ny))
+	
 	dx = checkDistance(x, Nx)
 	dy = checkDistance(y, Ny)
+	
+	print("dx: " + str(dx))
+	print("dy: " + str(dy))
 
 	if x == Nx:
+		print("x = Nx")
 		diagonals = 0
 		lines = abs(y - Ny)
 	elif y == Ny:
+		print("y = Ny")
 		diagonals = 0
 		lines = abs(x - Nx)
 	
 	i = 0
 	while x != Nx and y != Ny and i != 100:
 		if dx > dy:
+			print("dx > dy")
 			if x < Nx:
+				print("x < Nx")
 				x += 1
 			elif x > Nx:
+				print("x > Nx")
 				x -= 1
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
 			lines += 1
 		
 		elif dx < dy:
+			print("dx < dy")
 			if y < Ny:
+				print("y < Ny")
 				y += 1
 			elif y > Ny:
+				print("y > Ny")
 				y -= 1
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
 			lines += 1
 		
 		elif dx == dy:
+			print("dx = dy")
 			if x < Nx:
+				print("x < Nx")
 				x += 1
 			elif x > Nx:
+				print("x > Nx")
 				x -= 1
 			if y < Ny:
+				print("y < Ny")
 				y += 1
 			elif y > Ny:
+				print("y > Ny")
 				y -= 1
 			dx = checkDistance(x, Nx)
 			dy = checkDistance(y, Ny)
@@ -80,7 +97,15 @@ def calculateLine(x, y, Nx, Ny):
 	print("diagLines: " + str(diagonals) + " " + str(lines))
 
 def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, lines, diagonals, playerID):
+	print("playerX: " + str(playerX))
+	print("playerY: " + str(playerY))
+	print("diffX: " + str(diffX))
+	print("diffY: " + str(diffY))
+	print("newX: " + str(newX))
+	print("newY: " + str(newY))
+	
 	if diffX == 0 and diffY != 0:
+		print("diffX = 0")
 		if typeY == "negative": 
 			collumm = "yPos = yPos"
 			value = " - 1"
@@ -89,6 +114,7 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 			value = " - 1"
 	
 	elif diffY == 0 and diffX != 0:
+		print("diffY = 0")
 		if typeX == "negative":
 			collumm = "xPos = xPos"
 			value = " - 1"
@@ -98,8 +124,11 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 
 	elif playerX != newX and playerY != newY:
 		if lines != 0:
+			print("There are " + str(lines) + " lines left")
 			if diffX > diffY:
+				print("diffX > diffY")
 				if typeX == "negative":
+					print(typeX)
 					collumm = "xPos = xPos"
 					value = " - 1"
 				else:
@@ -107,7 +136,9 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 					value = " + 1"
 			
 			elif diffX < diffY:
+				print("diffX < diffY")
 				if typeY == "negative":
+					print(typeY)
 					collumm = "yPos = yPos"
 					value = " - 1"
 				
@@ -117,13 +148,17 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 			lines -= 1
 	
 		elif diagonals != 0:
+			print("There are " + str(diagonals) + " diagonals left")
 			if typeX == "negative" and typeY == "negative":
+				print("Double negative")
 				collumm = "xPos = xPos - 1, "
 				value = "yPos = yPos - 1"
 			elif typeX == "negative":
+				print("TypeX negative")
 				collumm = "xPos = xPos - 1, "
 				value = "yPos = yPos + 1"
 			elif typeY == "negative":
+				print("TypeY negative")
 				collumm = "xPos = xPos + 1, "
 				value = "yPos = yPos - 1"
 			else:
