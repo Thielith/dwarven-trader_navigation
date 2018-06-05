@@ -19,7 +19,7 @@ function loopDelay(){
 		console.log("3 second has passed")
 		updateDatabase()
 		loopDelay()
-		io.socket.emit('getYourPos')
+		io.local.emit('getYourPos')
 	}, 3000)
 }
 loopDelay()
