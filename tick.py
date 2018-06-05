@@ -32,13 +32,9 @@ print("newY: " + str(posTable[0][newY]))
 
 dx = 0
 dy = 0
-def checkDistance(x, y, Nx, Ny):
-	dx = abs(Nx - x)
-	dy = abs(Ny - y)
-	print("dx" + str(dx))
-	print("dy" + str(dy))
-	return dx
-	return dy
+def checkDistance(x, y):
+	z = abs(x - y)
+	return z
 
 diagonals = 0
 lines = 0
@@ -46,7 +42,8 @@ def calculateLine(x, y, Nx, Ny):
 	Nx = abs(Nx)
 	Ny = abs(Ny)
 
-	checkDistance(x, y, Nx, Ny)
+	dx = checkDistance(x, Nx)
+	dy = checkDistance(y, Ny)
 	print("dx" + str(dx))
 	print("dy" + str(dy))
 
@@ -65,7 +62,8 @@ def calculateLine(x, y, Nx, Ny):
 				x += 1
 			elif x > Nx:
 				x -= 1
-			checkDistance(x, y, Nx, Ny)
+			dx = checkDistance(x, Nx)
+			dy = checkDistance(y, Ny)
 			print("lines x + 1")
 			lines += 1
 		
@@ -74,7 +72,8 @@ def calculateLine(x, y, Nx, Ny):
 				y += 1
 			elif y > Ny:
 				y -= 1
-			checkDistance(x, y, Nx, Ny)
+			dx = checkDistance(x, Nx)
+			dy = checkDistance(y, Ny)
 			print("lines y + 1")
 			lines += 1
 		
@@ -87,7 +86,8 @@ def calculateLine(x, y, Nx, Ny):
 				y += 1
 			elif y > Ny:
 				y -= 1
-			checkDistance(x, y, Nx, Ny)
+			dx = checkDistance(x, Nx)
+			dy = checkDistance(y, Ny)
 			print("diagonals + 1")
 			diagonals += 1
 		
