@@ -37,7 +37,11 @@ def checkDistance(x, y, Nx, Ny):
 	dy = abs(Ny - y)
 	print("dx" + str(dx))
 	print("dy" + str(dy))
+	return dx
+	return dy
 
+diagonals = 0
+lines = 0
 def calculateLine(x, y, Nx, Ny):
 	Nx = abs(Nx)
 	Ny = abs(Ny)
@@ -92,8 +96,7 @@ def calculateLine(x, y, Nx, Ny):
 	print("diagLines: " + str(diagonals) + " " + str(lines))
 
 
-diagonals = 0
-lines = 0
+
 calculateLine(posTable[0][playerX], posTable[0][playerY], posTable[0][newX], posTable[0][newY])
 print("playerX: " + str(posTable[0][playerX]))
 print("playerY: " + str(posTable[0][playerY]))
