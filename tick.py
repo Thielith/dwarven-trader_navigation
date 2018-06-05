@@ -135,6 +135,9 @@ def calculateNextXY(playerX, playerY, newX, newY, typeX, typeY, diffX, diffY, li
 	print(sqlCommand)
 	cur.execute(sqlCommand)
 
+if isInstance(posTable[2][1], str):
+	print("NULL is String")
+print(posTable[2][1])
 
 for i in posTable:
 	typeX = ""
