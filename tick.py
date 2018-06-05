@@ -32,6 +32,8 @@ print("playerY: " + str(posTable[0][playerY]))
 print("newX: " + str(posTable[0][newX]))
 print("newY: " + str(posTable[0][newY]))
 
+dx = 0
+dy = 0
 def checkDistance(x, y, Nx, Ny):
 	dx = abs(Nx - x)
 	dy = abs(Ny - y)
