@@ -25,8 +25,6 @@ if posTable[1][newY] < 0:
 diffX = abs(posTable[0][playerX] - posTable[0][newX])
 diffY = abs(posTable[0][playerY] - posTable[0][newY])
 
-diagonals = 0
-lines = 0
 print("playerX: " + str(posTable[0][playerX]))
 print("playerY: " + str(posTable[0][playerY]))
 print("newX: " + str(posTable[0][newX]))
@@ -85,6 +83,9 @@ def calculateLine(x, y, Nx, Ny):
 
 	print("diagLines: " + str(diagonals) + " " + str(lines))
 
+
+diagonals = 0
+lines = 0
 calculateLine(posTable[0][playerX], posTable[0][playerY], posTable[0][newX], posTable[0][newY])
 print("playerX: " + str(posTable[0][playerX]))
 print("playerY: " + str(posTable[0][playerY]))
