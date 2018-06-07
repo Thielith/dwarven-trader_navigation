@@ -29,11 +29,10 @@ io.sockets.on('connection', function (socket) {
 			send = result
 			if (err) throw err;
 			for(i = 0; i < result.length; i++){
-				var sql = "SELECT * FROM _item_ WHERE id = " + send[i].itemID
+				var sql = "SELECT nameID, basePrice FROM _item_ WHERE id = " + send[i].itemID
 				con.query(sql, function(err, resulta){
 					if (err) throw err;
-					send[i].name = resulta.nameID
-					send[i].basePrice = resulta.basePrice
+					send = {...send, ...resulta}
 				})
 			}
 			socket.emit('getPlayerData', send)
