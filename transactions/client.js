@@ -6,8 +6,10 @@ var sellNum = 0;
 var who = "shop";
 var send = []
 
+console.log("asdwqa")
 socket.emit('getPlayerCoin', playerID);
 socket.on('getPlayerCoin', function(data){
+	console.log("e")
 	document.getElementById('coin').innerHTML = data
 	socket.emit('getPlayerItems', playerID)
 })

@@ -15,6 +15,7 @@ io.sockets.on('connection', function (socket) {
 	console.log("Someone From " + clientIp + " Connected")
 	
 	socket.on('getPlayerCoin', function(id){
+		console.log("asd")
 		var sql = "SELECT coin FROM units WHERE id = " + id + ";"
 		con.query(sql, function(err, result){
 			if (err) throw err;
