@@ -39,7 +39,10 @@ io.sockets.on('connection', function (socket) {
 					console.log(send)
 				})
 			}
-			socket.emit('getPlayerData', send)
+			setTimeout(function(){
+				socket.emit('getPlayerData', send)
+			}, 250)
+			
 		})
 	})
 	

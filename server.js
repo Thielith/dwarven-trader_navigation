@@ -15,7 +15,7 @@ function updateDatabase(){
 }
 
 function loopDelay(){
-	setTimeout(function () {
+	setTimeout(function(){
 		console.log("------------------")
 		updateDatabase()
 		loopDelay()
