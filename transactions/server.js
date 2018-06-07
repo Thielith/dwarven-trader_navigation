@@ -39,8 +39,9 @@ io.sockets.on('connection', function (socket) {
 					console.log(resulta)
 					console.log("ii:")
 					console.log(ii)
+					console.log(send[i])
 					if (err) throw err;
-					send[i].name = resulta[0].name
+					send[i].name = resulta[0].nameID
 					console.log("send:")
 					console.log(send)
 					ii += 1
