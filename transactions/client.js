@@ -8,10 +8,12 @@ var send = []
 
 socket.emit('getPlayerCoin', playerID);
 socket.on('getPlayerCoin', function(data){
-	document.getElementById('coin').innerHTML = data
+	console.log(data)
+	document.getElementById('coin').innerHTML = data[0].coin
 	socket.emit('getPlayerItems', playerID)
 })
 socket.on('getPlayerItems', function(data){
+	console.log(data)
 	playerItems = data
 	for(i = 0; i < data.length; i++){
 		document.getElementById('playerItems').innerHTML =

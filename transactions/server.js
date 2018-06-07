@@ -23,7 +23,7 @@ io.sockets.on('connection', function (socket) {
 	})
 	
 	socket.on('getPlayerItems', function(id){
-		var send
+		var send;
 		var sql = "SELECT itemID, quantity, qualityID FROM items WHERE ownerID = " + id + ";"
 		con.query(sql, function(err, result){
 			send = result
