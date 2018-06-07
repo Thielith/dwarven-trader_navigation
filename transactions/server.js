@@ -26,8 +26,6 @@ io.sockets.on('connection', function (socket) {
 		var send;
 		var sql = "SELECT itemID, quantity, qualityID FROM items WHERE ownerID = " + id + ";"
 		con.query(sql, function(err, result){
-			console.log("result:")
-			console.log(result)
 			send = result
 			if (err) throw err;
 			var ii = 0
@@ -35,15 +33,8 @@ io.sockets.on('connection', function (socket) {
 				console.log("loop")
 				var sql = "SELECT nameID, basePrice FROM _item_ WHERE id = " + send[i].itemID
 				con.query(sql, function(err, resulta){
-					console.log("resulta:")
-					console.log(resulta)
-					console.log("ii:")
-					console.log(ii)
-					console.log(send[ii])
 					if (err) throw err;
 					send[ii].name = resulta[0].nameID
-					console.log("send:")
-					console.log(send)
 					ii += 1
 				})
 			}

@@ -18,7 +18,7 @@ socket.on('getPlayerItems', function(data){
 	for(i = 0; i < data.length; i++){
 		document.getElementById('playerItems').innerHTML =
 			document.getElementById('playerItems').innerHTML
-			+ "<p id='playerItems" + i + "' onclick='sellQueue(" + i + ", " + data[i].name + ")'>" + data[i].name + " x" + data[i].quantity +"</p>";
+			+ "<p id='playerItems" + i + "' onclick='sellQueue(" + i + ", '" + data[i].name + "')'>" + data[i].name + " x" + data[i].quantity + "</p>";
 	}
 })
 
