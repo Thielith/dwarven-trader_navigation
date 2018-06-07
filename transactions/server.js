@@ -36,7 +36,7 @@ io.sockets.on('connection', function (socket) {
 					console.log(resulta)
 					if (err) throw err;
 					send = {...send, ...resulta}
-					console.(send)
+					console.log(send)
 				})
 			}
 			socket.emit('getPlayerData', send)
