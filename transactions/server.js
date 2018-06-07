@@ -30,18 +30,20 @@ io.sockets.on('connection', function (socket) {
 			console.log(result)
 			send = result
 			if (err) throw err;
+			var ii = 0
 			for(i = 0; i < result.length; i++){
 				console.log("loop")
 				var sql = "SELECT nameID, basePrice FROM _item_ WHERE id = " + send[i].itemID
 				con.query(sql, function(err, resulta){
 					console.log("resulta:")
 					console.log(resulta)
-					console.log("i:")
-					console.log(i)
+					console.log("ii:")
+					console.log(ii)
 					if (err) throw err;
 					send[i].name = resulta[0].name
 					console.log("send:")
 					console.log(send)
+					ii += 1
 				})
 			}
 			setTimeout(function(){
