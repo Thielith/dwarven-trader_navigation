@@ -26,13 +26,17 @@ io.sockets.on('connection', function (socket) {
 		var send;
 		var sql = "SELECT itemID, quantity, qualityID FROM items WHERE ownerID = " + id + ";"
 		con.query(sql, function(err, result){
+			console.log(result)
 			send = result
 			if (err) throw err;
 			for(i = 0; i < result.length; i++){
+				console.log("loop")
 				var sql = "SELECT nameID, basePrice FROM _item_ WHERE id = " + send[i].itemID
 				con.query(sql, function(err, resulta){
+					console.log(resulta)
 					if (err) throw err;
 					send = {...send, ...resulta}
+					console.(send)
 				})
 			}
 			socket.emit('getPlayerData', send)
