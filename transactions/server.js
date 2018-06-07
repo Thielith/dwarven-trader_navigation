@@ -23,18 +23,20 @@ io.sockets.on('connection', function (socket) {
 	})
 	
 	socket.on('getPlayerItems', function(id){
+		var send
 		var sql = "SELECT itemID, quantity, qualityID FROM items WHERE ownerID = " + id + ";"
 		con.query(sql, function(err, result){
+			send = result
 			if (err) throw err;
 			for(i = 0; i < result.length; i++){
-				var sql = "SELECT * FROM _item_ WHERE id = " + result[i].itemID
+				var sql = "SELECT * FROM _item_ WHERE id = " + send[i].itemID
 				con.query(sql, function(err, resulta){
 					if (err) throw err;
-					result[i].name = resulta.nameID
-					result[i].basePrice = resulta.basePrice
+					send[i].name = resulta.nameID
+					send[i].basePrice = resulta.basePrice
 				})
 			}
-			socket.emit('getPlayerData', result)
+			socket.emit('getPlayerData', send)
 		})
 	})
 	
