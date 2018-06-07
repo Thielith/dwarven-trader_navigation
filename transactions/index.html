@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+		<script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+		<link rel='stylesheet' href='./index.css' />
+		<link rel='stylesheet' href='./align.css' />
+    </head>
+
+    <body>
+		<div class="container" style="border-style:hidden hidden solid">
+			<div class="header" style="border-style:hidden hidden solid">
+				<p id="coin" style="float:left">Coin: 0</p>
+				<h1 class="stayCenter">What would you like to sell?</h1>
+			</div>
+			
+			<div class="row">
+				<div class="container" style="width:50%;border-style:hidden">
+					<h3 class="stayCenter"><u>Your Items:</u></h3>
+					<p class="stayCenter" id="playerItems"></p>
+				</div>
+				
+				<div class="container" style="width:50%;border-style:hidden hidden hidden solid">
+					<h3 class="stayCenter"><u>Selling:</u></h3>
+					<p class="stayCenter" id="selling"></p>
+				</div>
+			</div>
+			
+			<div class="container" style="border-style:solid hidden hidden">
+				<a class='button attack' href="./town.html">Leave</a>
+				<p id="playerMoney"></p>
+			</div>
+		</div>
+    </body>
+
+	<head>
+		<script src='./client.js'></script>
+	</head>
+</html>

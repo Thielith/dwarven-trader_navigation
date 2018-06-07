@@ -1,0 +1,96 @@
+.button, .panel{
+    background-color: #000000;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.button.attack{
+	margin-left: 125px;
+	padding: 50px 75px;
+	width: 200px
+}
+#hidden_content {
+	display: block;
+}
+
+.link {
+	font-size: 18px;
+	text-align: center;
+
+}
+
+.container {
+	width: 100%;
+	border: 1px solid black;
+	overflow: auto;
+	float: left;
+}
+.container.collumS {
+	width: 12%;
+	padding: 5px;
+}
+.container.collumM {
+	width: 76%;
+	padding:5px
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+body {
+  margin: 0;
+}
+
+.header {
+    background-color: #f1f1f1;
+    padding: 10px;
+	border: 1px solid black;
+	
+}
+.footer {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 10px;
+}
+
+.nav {
+    float: right;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+.article {
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+	text-align: center;
+}
+
+.goRight {
+	float: right;
+}
+
+.goRightText {
+	text-align: right;
+}
+
+.stayCenter {
+	text-align: center
+}
+
+#audio {
+    display: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto\9;
+}
